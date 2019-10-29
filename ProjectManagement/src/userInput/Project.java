@@ -1,17 +1,24 @@
-package data;
+package userInput;
 
 import java.util.ArrayList;
 
 public class Project {
 	
+	//Optional if you want to create it.
 	enum Members {
 		
 	}
 	
+	//Elements Needed. 
 	//projectName,priority,startDate,deliveryDate,Names[Array]
 	private String projectName,priority,startDate,deliveryDate;
     private ArrayList<String> Names = new ArrayList<String>();
 	
+    
+    
+    
+    
+    //Return
 	/**
 	 * @return the projectName
 	 */
