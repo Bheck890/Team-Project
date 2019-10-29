@@ -1,10 +1,12 @@
 package userInput;
 
+import java.util.ArrayList;
+
 public class Member {
 
 	//Variables
 	private String Name;
-	private String[] Projects;
+	private ArrayList<String> Projects = new ArrayList<String>();
 	
 	
 	
@@ -25,13 +27,14 @@ public class Member {
 	/**
 	 * @return the projects
 	 */
-	public String[] getProjects() {
+	public ArrayList<String> getProjects() {
 		return Projects;
 	}
 	/**
 	 * @param projects the projects to set
 	 */
-	public void setProjects(String[] projects) {
+	public void setProjects(ArrayList<String> projects) {
 		Projects = projects;
-	} 
+	}
+	
 }

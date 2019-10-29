@@ -1,6 +1,6 @@
 package userInput;
 
-import java.util.ArrayList;
+
 
 public class Project {
 	
@@ -11,11 +11,16 @@ public class Project {
 	
 	//Elements Needed. 
 	//projectName,priority,startDate,deliveryDate,Names[Array]
-	private String projectName,priority,startDate,deliveryDate;
-    private ArrayList<String> Names = new ArrayList<String>();
+	private String projectName,startDate,deliveryDate;
+	private int priority; 
+    private String[] Names;
 	
-    
-    
+    public Project(String projectName, String priority, String startDate, String deliveryDate) {
+    	setProjectName(projectName);
+    	setPriority(priority);
+    	setStartDate(startDate);
+    	setDeliveryDate(deliveryDate);
+    }
     
     
     //Return
@@ -31,20 +36,6 @@ public class Project {
 	 */
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
-	}
-
-	/**
-	 * @return the priority
-	 */
-	public String getPriority() {
-		return priority;
-	}
-
-	/**
-	 * @param priority the priority to set
-	 */
-	public void setPriority(String priority) {
-		this.priority = priority;
 	}
 
 	/**
@@ -78,15 +69,56 @@ public class Project {
 	/**
 	 * @return the names
 	 */
-	public ArrayList<String> getNames() {
+	public String[] getNames() {
 		return Names;
 	}
 
 	/**
 	 * @param names the names to set
 	 */
-	public void setNames(ArrayList<String> names) {
+	public void setNames(String[] names) {
 		Names = names;
+	}
+
+
+	/**
+	 * @return the priority
+	 */
+	public int getPriority() {
+		return priority;
+	}
+
+
+	/**
+	 * @param priority the priority to set
+	 */
+	public void setPriority(int priority) {
+		this.priority = priority;
+	}
+	
+	/**
+	 * @param priority the priority to set
+	 */
+	public void setPriority(String priority) {
+		if(priority.equalsIgnoreCase("Low"))
+			this.priority = 1;
+		else if (priority.equalsIgnoreCase("Medium"))
+			this.priority = 2;
+		else if(priority.equalsIgnoreCase("High"))
+			this.priority = 3;
+		else
+			this.priority = 0;
+	}
+	
+	public String toString()
+	{
+		System.out.println("\n\nProjectName:" + getProjectName());
+		System.out.println("Start Date:" + getStartDate());
+		System.out.println("DeliveryDate:" + getDeliveryDate());
+		System.out.println("Priority:" + getPriority());
+		System.out.println("Members:" + getNames());
+		
+		return " ";
 	}
 	
 	
