@@ -6,10 +6,27 @@ public class Member {
 
 	//Variables
 	private String Name;
-	private ArrayList<String> Projects = new ArrayList<String>();
+	private ArrayList<String> ProjectList = new ArrayList<String>();
 	
+	public Member(String Name, String firstProject)
+	{
+		setName(Name);
+		addProject(firstProject);
+	}
 	
+	public void addProject(String name) {
+		//ProjectList.add(name); //testing
+		ProjectList.add(new String(name)); //Default
+	}
 	
+	public String toString()
+	{
+		System.out.println("\n\nName: " + getName());
+		System.out.println("Projects: ");
+		for(int i = 0 ; i < ProjectList.size() ; i++)
+			System.out.println(" - " + ProjectList.get(i));
+		return " ";
+	}
 	
 	//Return
 	/**
@@ -28,13 +45,13 @@ public class Member {
 	 * @return the projects
 	 */
 	public ArrayList<String> getProjects() {
-		return Projects;
+		return ProjectList;
 	}
 	/**
 	 * @param projects the projects to set
 	 */
 	public void setProjects(ArrayList<String> projects) {
-		Projects = projects;
+		ProjectList = projects;
 	}
 	
 }

@@ -15,13 +15,26 @@ public class Project {
 	private int priority; 
     private String[] Names;
 	
-    public Project(String projectName, String priority, String startDate, String deliveryDate) {
+    public Project(String projectName, String priority, String startDate, String deliveryDate, String[] Names) {
     	setProjectName(projectName);
     	setPriority(priority);
     	setStartDate(startDate);
     	setDeliveryDate(deliveryDate);
+    	setNames(Names);
     }
     
+    //Methods
+    public String toString()
+	{
+		System.out.println("\n\nProjectName: " + getProjectName());
+		System.out.println("Start Date: " + getStartDate());
+		System.out.println("DeliveryDate: " + getDeliveryDate());
+		System.out.println("Priority: " + getPriority());
+		System.out.println("Members: ");
+		for(int i = 0 ; i < getNames().length ; i++)
+			System.out.println(" - " + Names[i]);
+		return " ";
+	}
     
     //Return
 	/**
@@ -110,16 +123,7 @@ public class Project {
 			this.priority = 0;
 	}
 	
-	public String toString()
-	{
-		System.out.println("\n\nProjectName:" + getProjectName());
-		System.out.println("Start Date:" + getStartDate());
-		System.out.println("DeliveryDate:" + getDeliveryDate());
-		System.out.println("Priority:" + getPriority());
-		System.out.println("Members:" + getNames());
-		
-		return " ";
-	}
+	
 	
 	
 }
