@@ -41,17 +41,5 @@ public class Member {
 	public void setName(String name) {
 		Name = name;
 	}
-	/**
-	 * @return the projects
-	 */
-	public ArrayList<String> getProjects() {
-		return ProjectList;
-	}
-	/**
-	 * @param projects the projects to set
-	 */
-	public void setProjects(ArrayList<String> projects) {
-		ProjectList = projects;
-	}
 	
 }
