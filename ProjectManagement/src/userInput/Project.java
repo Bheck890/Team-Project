@@ -24,7 +24,7 @@ public class Project {
     }
     
     //Methods
-    public String toString()
+    public String toString() //Debug Method
 	{
 		System.out.println("\n\nProjectName: " + getProjectName());
 		System.out.println("Start Date: " + getStartDate());

@@ -15,11 +15,14 @@ public class Member {
 	}
 	
 	public void addProject(String name) {
-		//ProjectList.add(name); //testing
-		ProjectList.add(new String(name)); //Default
+		ProjectList.add(name); //testing
+		//ProjectList.add(new String(name)); //Default
 	}
 	
-	public String toString()
+	
+
+	
+	public String toString() //Debug Method
 	{
 		System.out.println("\nName: " + getName());
 		System.out.println("Projects: ");
@@ -27,6 +30,8 @@ public class Member {
 			System.out.println(" - " + ProjectList.get(i));
 		return " ";
 	}
+	
+	
 	
 	//Return
 	/**
@@ -40,6 +45,19 @@ public class Member {
 	 */
 	public void setName(String name) {
 		Name = name;
+	}
+	
+	/**
+	 * @return the ProjectList
+	 */
+	public ArrayList<String> getProjectList() {
+		return ProjectList;
+	}
+	/**
+	 * @param ProjectList the ProjectList to set
+	 */
+	public void setProjectList(ArrayList<String> ProjectList) {
+		this.ProjectList = ProjectList;
 	}
 	
 }

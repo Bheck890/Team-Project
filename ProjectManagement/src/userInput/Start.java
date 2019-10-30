@@ -19,19 +19,15 @@ public class Start {
 	
 	//2hr to code 1 year to debug
 	
-	
-	//projectName,priority,startDate,deliveryDate,Members[Array]
 	public static void main(String[] args) {
-		
 		ReadProjectInfo(); //Read the Projects Text file and Input the data into an Array Object. 
-		AnalyzeMembers(); //sets the last array of the input into array of members; 
-		//WriteMemberStatistics(); //Writes to Member text File
+		AnalyzeMembers(); //Reads the Project File and keeps track of the Members and what Projects they are parts of. 
+		WriteMemberStatistics(); //Writes the Members to Member text File
 	}
 	
 	public static void ReadProjectInfo()
 	{
 		//projectName,priority,startDate,deliveryDate,Members[Array]
-		
 		try {
 			Scanner input = new Scanner(new File("Projects.txt"));
 			while(input.hasNextLine())
@@ -56,8 +52,9 @@ public class Start {
 				}
 				Projects.add(new Project(name,priority,startDate,deliveryDate,MemberNames));
 				
-				/*
+				
 				//Debug(text File)
+				/*
 				for(int i = 0; i <DataInput.length; i++)
 				{
 					System.out.print(i + ": " + DataInput[i] + " "); //Debug
@@ -88,7 +85,7 @@ public class Start {
 			// Analyze the List of names in the Projects
 			for(int j = 0; j < Names.length ; j++)
 			{
-				//STEP 3  Compare each Name to the Member NAMES if they exist or not
+				//STEP 3  Compare each Name to the MemberArray NAMES if they exist or not
 				int matchNum = 0;
 				boolean matching = false;
 				for(int k = 0; k < Members.size();k++)
@@ -104,7 +101,8 @@ public class Start {
 					Members.add(new Member(Names[j], ProjectName));
 			}
 		}
-		/* DEBUG 
+		//DEBUG (Members Data)
+		/*
 		for(int k = 0; k < Members.size();k++)
 		{
 			System.out.println(Members.get(k));
@@ -115,15 +113,16 @@ public class Start {
 	public static void WriteMemberStatistics()
 	{
 		try {
-			
-			PrintWriter fw = new PrintWriter(new FileOutputStream("Members.txt",true));
-			
-			fw.println("ProjectName" + "," + "Priority" + "," + "StartDate" + ", ....."); //Project Elements each Separated by a , 
-			
-			int Members = 3; //Probably going to need an array of members but also a system for each of the members.
-			for(int i = 0; i < Members; i++)
-			{
-				fw.println("," + "Member1");
+			PrintWriter fw = new PrintWriter(new FileOutputStream("Members.txt"));
+			for(int i = 0; i < Members.size(); i++)
+			{	
+				fw.print(Members.get(i).getName() + ";");
+				fw.print(Members.get(i).getProjectList().get(0));
+				for(int j = 1; j < Members.get(i).getProjectList().size(); j++)
+					{
+						fw.print("," + Members.get(i).getProjectList().get(j));
+					}
+				fw.println();
 			}
 			fw.close();
 			
