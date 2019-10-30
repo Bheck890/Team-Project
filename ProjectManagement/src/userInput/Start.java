@@ -17,6 +17,9 @@ public class Start {
 	
 	//file Output Example
 	
+	//2hr to code 1 year to debug
+	
+	
 	//projectName,priority,startDate,deliveryDate,Members[Array]
 	public static void main(String[] args) {
 		
@@ -77,48 +80,36 @@ public class Start {
 		//Go through each Project
 		for(int i = 0; i < Projects.size() ; i++) // Check Each Project for members;
 		{
-			//Return Needed Project Data to Evaluate
+			//Gather Needed Project Data to Evaluate
 			String[] Names = Projects.get(i).getNames();
 			String ProjectName = Projects.get(i).getProjectName();
 			
-			
-			//STEP 2 //ArrayList then Array
-			
-			
-			// Analyze the List of members in the Projects
+			//STEP 2 
+			// Analyze the List of names in the Projects
 			for(int j = 0; j < Names.length ; j++)
 			{
-				if(Members.size() == 0)// Create a First Member so Members can be compared
-				{
-					Members.add(new Member(Names[0], ProjectName));
-					System.out.println("1: " + Members.get(Members.size()-1));  //Debug(Members Array) As it is Created
-				}
-				System.out.println("j: " + j); //!!!!!!!!!!!!!!
-				if(Members.size() >= 1)
-				{
-					//STEP 3
-					//Check if name Is already in the Member array
-					for(int k = 0; k < Members.size() ; k++)
+				//STEP 3  Compare each Name to the Member NAMES if they exist or not
+				int matchNum = 0;
+				boolean matching = false;
+				for(int k = 0; k < Members.size();k++)
+					if(Members.get(k).getName().equals(Names[j]))
 					{
-						System.out.println("k: " + k); //!!!!!!!!!!!!!!
-						if((Members.get(k).getName().equals(Names[j]))) //If name all Ready matches a name that members Already have
-						{
-							Members.get(k).addProject(ProjectName);
-							System.out.println("Project Added!: " + Members.get(Members.size()-1));  //Debug(Members Array) As it is Created
-							k = Members.size();
-						}	
-						else 
-						{
-							Members.add(new Member(Names[j],ProjectName));  //else Create a new member and add it to the array
-							System.out.println(Members.get(Members.size()-1));  //Debug(Members Array) As it is Created
-							k = Members.size();
-						}
+						matching = true;
+						matchNum = k;
 					}
-				}
+				
+				if(matching)
+					Members.get(matchNum).addProject(ProjectName);
+				else
+					Members.add(new Member(Names[j], ProjectName));
 			}
-			
 		}
-		System.out.println(Members.size());
+		/* DEBUG 
+		for(int k = 0; k < Members.size();k++)
+		{
+			System.out.println(Members.get(k));
+		}
+		*/
 	}
 	
 	public static void WriteMemberStatistics()
@@ -143,87 +134,4 @@ public class Start {
 		}
 	}
 	
-	//OLD DATA
-	
-	
-	
-	////////////////////////////
-	/* V2
-			//STEP 2 //ArrayList then Array
-			if(Members.size() == 0)// Create a First Member so Members can be compared
-			{
-				Members.add(new Member(Names[0], ProjectName));
-				System.out.println("1: " + Members.get(Members.size()-1));  //Debug(Members Array) As it is Created
-			}
-			
-			// Analyze the List of members in the Projects
-			for(int j = 0; j < Members.size() ; j++)
-			{
-				System.out.println(j); //!!!!!!!!!!!!!!
-				if(Members.size() >= 1)
-				{
-					//STEP 3
-					//Check if name Is already in the Member array
-					for(int k = 0; k < Names.length ; k++)
-					{
-						System.out.println(k); //!!!!!!!!!!!!!!
-						if((Members.get(j).getName().equals(Names[k]))) //If name all Ready matches a name that members Already have
-						{
-							Members.get(j).addProject(ProjectName);
-							System.out.println("Project Added!: " + Members.get(Members.size()-1));  //Debug(Members Array) As it is Created
-						}	
-						else 
-						{
-							Members.add(new Member(Names[k],ProjectName));  //else Create a new member and add it to the array
-							System.out.println(Members.get(Members.size()-1));  //Debug(Members Array) As it is Created
-							j = Members.size();
-						}
-					}
-				}
-			}
-	
-	*/
-	//////////////////////////////////////////////
-	/* V1
-	//STEP 2 //Array then ArrayList
-	// Analyze the List of names in the Projects
-	for(int j = 0; j < Names.length ; j++)
-	{
-		
-		// Create a First Member so Members can be compared
-		if(Members.size() == 0)
-		{
-			Members.add(new Member(Names[j], ProjectName));
-			System.out.println("1: " + Members.get(Members.size()-1));  //Debug(Members Array) As it is Created
-		}
-		else if(Members.size() > 0)
-		{
-		
-			//STEP 3
-			//Check if name Is already in the Member array
-			for(int k = 0; k < Members.size() ; k++)
-			{
-				if((Members.get(k).getName().equals(Names[j]))) //If name all Ready matches a name that members Already have
-				{
-					Members.get(k).addProject(ProjectName);
-					System.out.println("Project Added!: " + Members.get(Members.size()-1));  //Debug(Members Array) As it is Created
-				}	
-				else 
-				{
-					Members.add(new Member(Names[j],ProjectName));  //else Create a new member and add it to the array
-					System.out.println(Members.get(Members.size()-1));  //Debug(Members Array) As it is Created
-					k = Members.size();
-				}
-			}
-		}
-			
-		//}
-		//catch(IndexOutOfBoundsException e)
-		//{
-			//Members.add(new Member(Names[j], ProjectName));
-			//System.out.println("1: " + Members.get(Members.size()-1));  //Debug(Members Array) As it is Created
-		//}
-	}
-	*/
-	//////////////////////////////////////////
 }

@@ -21,7 +21,7 @@ public class Member {
 	
 	public String toString()
 	{
-		System.out.println("\n\nName: " + getName());
+		System.out.println("\nName: " + getName());
 		System.out.println("Projects: ");
 		for(int i = 0 ; i < ProjectList.size() ; i++)
 			System.out.println(" - " + ProjectList.get(i));
